@@ -25,9 +25,9 @@ function divOsszeallit(lista){
     let txt = ``;
   for (let index = 0; index < lista.length; index++) {
     if(lista[index]==0){
-        txt += `<div class="lampa"></div>`;
+        txt += `<div id="${index}" class="lampa"></div>`;
     }else{
-        txt += `<div class="lampa pink"></div>`;
+        txt += `<div id="${index}" class="lampa pink"></div>`;
     }
   }
   FODIVELEM.html(txt)
@@ -52,10 +52,11 @@ for (let index = 0; index < FODIVELEM.length; index++) {
 }
 
 function kattintas(event){
+    console.log(event.target.id)
     $(event.target).toggleClass("pink")
     FODIVELEM.eq($(event.target-1)).toggleClass("pink")
     FODIVELEM.eq($(event.target)+1).toggleClass("pink")
     FODIVELEM.eq($(event.target)-N).toggleClass("pink")
     FODIVELEM.eq($(event.target)+N).toggleClass("pink")
-    console.log($(event.target))
+    
 }
