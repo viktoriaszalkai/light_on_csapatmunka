@@ -4,7 +4,6 @@ const FODIVELEM = $(".foDiv");
 
 const NINPUTELEM = $(".N");
 let N = 3;
-
 const KEZDGOMBELEM = $(".gombKezd");
 
 KEZDGOMBELEM.on("click", function () {
