@@ -31,8 +31,56 @@ function divOsszeallit(lista) {
     console.log(rozsaszinekSzama);
   }
   FODIVELEM.html(txt);
+  const LEIRASELEM = $(".leiras");
+  const LAMPAELEM = $(".lampa");
+  console.log(LAMPAELEM)
+  
+  FODIVELEM.on("click", 
+    function (event) {
+      $(event.target).toggleClass("pink");
+      /* console.log(event.target.id); */
+      let id = Number(event.target.id);
+      console.log("ID=", id);
+      const elotte1 = LAMPAELEM.eq(id - 1);
+      const utana1 = LAMPAELEM.eq(id + 1);
+      const elotte2 = LAMPAELEM.eq(id - N);
+      const utana2 = LAMPAELEM.eq(id + N);
+      console.log(LAMPAELEM, elotte1, elotte2, utana1, utana2);
+      if (id % N == 0) {
+        elotte1.toggleClass("pink");
+        elotte2.toggleClass("pink");
+        utana2.toggleClass("pink");
+        console.log(elotte1, elotte2, utana2);
+      } else if (id % N == 1) {
+        utana1.toggleClass("pink");
+        elotte2.toggleClass("pink");
+        utana2.toggleClass("pink");
+      } else {
+        elotte1.toggleClass("pink");
+        elotte2.toggleClass("pink");
+        utana2.toggleClass("pink");
+        utana1.toggleClass("pink");
+      }
+      LEIRASELEM.html(rozsaszinSzamolas);
+    }
+    );
+    
+function rozsaszinSzamolas() {
+  for (let index = 0; index < N.length; index++) {
+    if ((LAMPAELEM.eq(index).className = "pink")) {
+      rozsaszinekSzama += 1;
+    } else {
+      rozsaszinekSzama -= 1;
+    }
+    console.log(rozsaszinekSzama);
+  }
   return rozsaszinekSzama;
 }
+
+  }
+
+  /* return rozsaszinekSzama; */
+
 
 function listaOsszeallit(N) {
   let lista = [];
@@ -45,44 +93,4 @@ function listaOsszeallit(N) {
 }
 
 //játék
-const LEIRASELEM =$(".leiras");
-const LAMPAELEM = $(".lampa");
 
-for (let index = 0; index < FODIVELEM.length; index++) {
-  FODIVELEM.eq(index).on("click", kattintas);
-}
-
-function kattintas(event) {
-  $(event.target).toggleClass("pink");
-  /* console.log(event.target.id); */
-  let id=Number(event.target.id)
-  const elotte1 = LAMPAELEM.eq(id-1)
-  const utana1 = LAMPAELEM.eq(id+1)
-  const elotte2 = LAMPAELEM.eq(id-N)
-  const utana2 = LAMPAELEM.eq(id+N)
-  if (event.target.id % N == 0) {
-    $(elotte1).toggleClass("pink");
-    $(elotte2).toggleClass("pink");
-    $(utana2).toggleClass("pink");
-    
-  }else if(event.target.id % N == 1){
-    $(utana1).toggleClass("pink");
-    $(elotte2).toggleClass("pink");
-    $(utana2).toggleClass("pink");
-  } else {
-    $(elotte1).toggleClass("pink");
-    $(elotte2).toggleClass("pink");
-    $(utana2).toggleClass("pink");
-    $(utana1).toggleClass("pink");
-  }
-  LEIRASELEM.html(rozsaszinSzamolas)
-}
-function rozsaszinSzamolas(){
-for (let index = 0; index < N.length; index++) {
-  if ((LAMPAELEM.eq(index).className = "pink")) {
-    rozsaszinekSzama += 1;
-  }
-  console.log(rozsaszinekSzama); 
-}
-return rozsaszinekSzama;
-}
