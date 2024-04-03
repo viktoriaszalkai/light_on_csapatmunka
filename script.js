@@ -55,16 +55,28 @@ for (let index = 0; index < FODIVELEM.length; index++) {
 function kattintas(event) {
   $(event.target).toggleClass("pink");
   /* console.log(event.target.id); */
+
   const elotte1 = document.getElementById(event.target.id - 1);
   const utana1 = document.getElementById(event.target.id - -1);
   const elotte2 = document.getElementById(event.target.id - N);
   const utana2 = document.getElementById(event.target.id - -N);
-  $(elotte1).toggleClass("pink");
-  $(utana1).toggleClass("pink");
-  $(elotte2).toggleClass("pink");
-  $(utana2).toggleClass("pink");
+  if (event.target.id % N == 0) {
+    $(elotte1).toggleClass("pink");
+    $(elotte2).toggleClass("pink");
+    $(utana2).toggleClass("pink");
+   
+  }else if(event.target.id % N == 1){
+    $(utana1).toggleClass("pink");
+    $(elotte2).toggleClass("pink");
+    $(utana2).toggleClass("pink");
+  } else {
+    $(elotte1).toggleClass("pink");
+    $(elotte2).toggleClass("pink");
+    $(utana2).toggleClass("pink");
+    $(utana1).toggleClass("pink");
+  }
   for (let index = 0; index < N * N.length; index++) {
-    if (LAMPAELEM.eq(index).className = "pink") {
+    if ((LAMPAELEM.eq(index).className = "pink")) {
       rozsaszinekSzama += 1;
     }
     console.log(rozsaszinekSzama);
